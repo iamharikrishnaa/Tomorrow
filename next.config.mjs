@@ -1,9 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  eslint: {
-        ignoreDuringBuilds: true,
-    },
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    // Treat warnings as errors during production builds
+    if (!dev) {
+      config.plugins.push(
+        new webpack.ErrorOverlayPlugin({
+          overlay: {
+            warnings: true,
+            errors: true,
+          },
+        })
+      );
+    }
+    return config;
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
