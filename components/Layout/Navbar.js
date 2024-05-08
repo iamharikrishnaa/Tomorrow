@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Link from '../../utils/ActiveLink';
 import router from 'next/router';
+import Image from 'next/image';
 
 const Navbar = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -35,7 +36,7 @@ const Navbar = () => {
       <div className="navbar">
         {/* Logo */}
         <div className="logo">
-          <a href='/'><img src="\images\logo.png" style={{maxWidth: "75%"}} alt="Novagito Logo" /></a>
+          <Link href='/'><Image src="\images\logo.png" style={{maxWidth: "75%"}} alt="Novagito Logo" /></Link>
         </div>
         
         {/* Spacer */}
